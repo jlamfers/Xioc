@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xioc>
+  <!-- 
+  
+  <if-debug>
+    <bind service-type="Xioc.Test.IFoo, Xioc.Test" implementation-type="Xioc.Test.Foo, Xioc.Test" lifestyle="Transient"/>
+  </if-debug>
+   -->
+  <if-debug>
+    <bind-xml uri="debug.xml"/>
+    <!--<return/>-->
+  </if-debug>
+
+  <if>
+    <condition>
+      <any >
+        <debug/>
+        <true/>
+        <false/>
+      </any>
+      <all >
+        <true/>
+      </all>
+      <not>
+        <any>
+          <false/>
+          <false/>
+        </any>
+      </not>
+    </condition>
+    <then>
+      <debug-write text="YEP!" />
+      <!-- TEST -->
+    </then>
+    <else>
+      <!-- TEST -->
+    </else>
+  </if>
+</xioc>

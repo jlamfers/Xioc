@@ -1,0 +1,33 @@
+Xioc is an IOC tool that has been developed by following requirements:
+
+- Keep it easy: small code base (less than 2000 lines of code reported by Code Metric Results), transparent understandable architecture
+- focus on functionality, usability, defacto standards
+- good (above average) performance, avoid premature optimization, no focus on best-performance-ever-with-specific-context
+- still custruction is optimized with compiled delegates 
+- scope based (using scopes is required to be able to resolve instances)
+- simple lifestyle support : transient/transientNoDispose, perScope, perContainer, Unmanaged
+- fool proof usage => you may not be able to register "wrong" bindings. Each binding must be managed.
+- thread safe (under all circumstances)
+- easy integration with WCF, MVC5, WebApi2
+- supports auto wiring
+- supports constructor injection
+- supports property injection (optionally, disabled by default)
+- supports MEF annotations (optionally, disabled by default)
+- supports multi binding
+- supports enumerable, list, collection, and lazy injection
+- supports in-code configuration
+- supports xml-configuration (optionally, easy to extend/customize)
+- supports decorators
+- supports interception (using Microsoft's RealProxy )
+- supports scoped bindings (optionally, additional (conditional) bindings/decorators/interceptors on scope construction, controlled by scope depth and any other custom condition)
+- supports async fire-and-forget executions, scope lifetime will depend on async executions lifetime, if any (queued dispose)
+- supports custom dependencies
+- supports custom factories
+- supports context awareness
+- supports generics
+- supports recursion detection
+- supports methods ResolveScoped/ReleaseScoped, i.e., you may resolve an instance managed by an isolated scope, which is disposed by method ReleaseScoped(resolvedInstance)
+- lack of registration keys
+- no custom life styles, focus on scope
+- disposable tracking by default => created by xioc, then disposed by xioc
+- optionally supports memory overflow protection (protected by garbage collector/weak reference disposable storage)

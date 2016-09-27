@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6F4BD159-9A97-45D1-B996-D8C3827E4C3B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Xioc</RootNamespace>
+    <AssemblyName>Xioc</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Internal\ASyncManagerRootImpl.cs" />
+    <Compile Include="Core\Binding.cs" />
+    <Compile Include="Core\Internal\ASyncManager.cs" />
+    <Compile Include="Core\Internal\IDisposablesBag.cs" />
+    <Compile Include="Core\Internal\SynchronizeInvokeRootImpl.cs" />
+    <Compile Include="IContainer.cs" />
+    <Compile Include="IScope.cs" />
+    <Compile Include="Core\IASyncManager.cs" />
+    <Compile Include="Core\Internal\WeakDisposablesBag.cs" />
+    <Compile Include="Core\IContainerBase.cs" />
+    <Compile Include="Proxy\Core\DynamicInterfaceFactory.cs" />
+    <Compile Include="Proxy\Core\InterceptorCollection.cs" />
+    <Compile Include="Proxy\Core\Invocation.cs" />
+    <Compile Include="Proxy\Core\InvocationContext.cs" />
+    <Compile Include="Proxy\IInterceptor.cs" />
+    <Compile Include="Proxy\IInvocation.cs" />
+    <Compile Include="Proxy\InterceptorAction.cs" />
+    <Compile Include="Proxy\ProxyBuilder.cs" />
+    <Compile Include="Wcf\Host\DefaultServiceHostIocInitializer.cs" />
+    <Compile Include="Wcf\Host\DefaultXiocServiceHostFactory.cs" />
+    <Compile Include="Wcf\Host\IServiceHostIocInitializer.cs" />
+    <Compile Include="Wcf\Host\XiocServiceHostFactory.cs" />
+    <Compile Include="WithDependencies.cs" />
+    <Compile Include="Core\AppDomainExtension.cs" />
+    <Compile Include="Core\Internal\Extensions.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Wcf\BinderExtension.cs" />
+    <Compile Include="Wcf\ServiceClient.cs" />
+    <Compile Include="Core\Internal\IKernel.cs" />
+    <Compile Include="Core\Internal\ChildKernel.cs" />
+    <Compile Include="Wcf\IServiceClient.cs" />
+    <Compile Include="Core\Internal\WeakSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Internal\DisposablesBag.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="IBinder.cs" />
+    <Compile Include="IExports.cs" />
+    <Compile Include="Core\XiocException.cs" />
+    <Compile Include="XiocContainer.cs" />
+    <Compile Include="Core\Context.cs" />
+    <Compile Include="Core\Internal\CtorCompiler.cs" />
+    <Compile Include="Core\Internal\Kernel.cs" />
+    <Compile Include="Core\Internal\ResolverBuilder.cs" />
+    <Compile Include="Core\Internal\CollectionTypeHelper.cs" />
+    <Compile Include="Lifestyle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\Scope.cs" />
+    <Compile Include="Xml\BinderExtension.cs" />
+    <Compile Include="Xml\BuildHelper.cs" />
+    <Compile Include="Xml\Core\RoleHelper.cs" />
+    <Compile Include="Xml\Elements\XmlBinderBind.cs" />
+    <Compile Include="Xml\Elements\XmlBinderBindAllOf.cs" />
+    <Compile Include="Xml\Elements\XmlBinderBindIf.cs" />
+    <Compile Include="Xml\Elements\XmlBinderBindMefExports.cs" />
+    <Compile Include="Xml\Elements\XmlBinderBindWcf.cs" />
+    <Compile Include="Xml\Elements\XmlBinderBindXiocExports.cs" />
+    <Compile Include="Xml\Elements\XmlBinderBindXml.cs" />
+    <Compile Include="Xml\Elements\XmlBinderDecorate.cs" />
+    <Compile Include="Xml\Elements\XmlBinderIfDebug.cs" />
+    <Compile Include="Xml\Elements\XmlBinderIfRelease.cs" />
+    <Compile Include="Xml\Elements\XmlBinderIntercept.cs" />
+    <Compile Include="Xml\Elements\XmlBinderOnNewScope.cs" />
+    <Compile Include="Xml\Elements\XmlBinderReturn.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateAll.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateAny.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateDebug.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateFalse.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateNot.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateRole.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateTrue.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateUser.cs" />
+    <Compile Include="Xml\Extensions.cs" />
+    <Compile Include="Xml\IXmlConfigElement.cs" />
+    <Compile Include="Xml\XmlConfig.cs" />
+    <Compile Include="Xml\Elements\XmlPredicateRelease.cs" />
+    <Compile Include="Xml\XmlConfigElement.cs" />
+    <Compile Include="Xml\XmlConfigElementAttribute.cs" />
+    <Compile Include="Xml\XmlConfigElementBinder.cs" />
+    <Compile Include="Xml\XmlConfigElementPredicate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Xml\xioc-example.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

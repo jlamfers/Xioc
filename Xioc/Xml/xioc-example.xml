@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xioc>
+  <bind service-type="" implementation-type="" lifestyle="">
+    <dependencies>
+      <add name="" value=""/>
+    </dependencies>
+  </bind>
+  <decorate service-type="" decorator-type="" lifestyle=""/>
+  <decorate service-type="" interceptor-type=""/>
+  <bind-all-of service-type="" lifestyle="" if-not-can-be-resolved="true"/>
+  <bind-xioc-exports path=""/>
+  <bind-mef-exports default-lifestyle="" path=""/>
+  <if-debug>
+    <bind service-type="Xioc.Test.IFoo, Xioc.Test" implementation-type="Xioc.Test.Foo, Xioc.Test" lifestyle="Transient"/>
+  </if-debug>
+  <if-debug>
+    <bind-xml uri="debug.xml"/>
+    <return/>
+  </if-debug>
+
+  <on-new-scope level="1">
+    <if>
+      <condition>
+        <user any-of="administrator"/>
+      </condition>
+    </if>
+    <then>
+      <decorate service-type="blabla" decorator-type="blabla_logger" lifestyle="transient"/>
+    </then>
+  </on-new-scope>
+
+  <if>
+    <condition>
+      <any >
+        <user any-of="jan" type="windows/application/thread/http"/>
+        <role any-of="a,b,c" type="windows"/>
+        <role all-of="d,e,f"/>
+        <debug/>
+        <true/>
+        <false/>
+      </any>
+      <all >
+        <true/>
+      </all>
+      <not>
+        <any>
+          <false/>
+          <false/>
+        </any>
+      </not>
+    </condition>
+    <then>
+      <!-- custom-->
+      <debug-write text="THEN -> YEP!" />
+    </then>
+    <else>
+      <debug-write text="ELSE -> YEP!" />
+    </else>
+  </if>
+</xioc>
+
