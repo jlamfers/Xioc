@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <xioc>
-  <bind service-type="" implementation-type="" lifestyle="">
+  <bind service-type="srvType" implementation-type="implType" lifestyle="Transient">
     <dependencies>
-      <add name="" value=""/>
+      <add name="parname" value="parvalue"/>
     </dependencies>
   </bind>
-  <decorate service-type="" decorator-type="" lifestyle=""/>
-  <decorate service-type="" interceptor-type=""/>
-  <bind-all-of service-type="" lifestyle="" if-not-can-be-resolved="true"/>
-  <bind-xioc-exports path=""/>
-  <bind-mef-exports default-lifestyle="" path=""/>
+  <decorate service-type="srvType" decorator-type="decType" lifestyle="PerScope"/>
+  <decorate service-type="srvType" interceptor-type="intercType"/>
+  <bind-all-of service-type="srvType" lifestyle="PerContainer" if-not-can-be-resolved="true"/>
+  <bind-xioc-exports path="path"/>
+  <bind-mef-exports default-lifestyle="Transient" path="path"/>
   <if-debug>
     <bind service-type="Xioc.Test.IFoo, Xioc.Test" implementation-type="Xioc.Test.Foo, Xioc.Test" lifestyle="Transient"/>
   </if-debug>
@@ -25,14 +25,14 @@
       </condition>
     </if>
     <then>
-      <decorate service-type="blabla" decorator-type="blabla_logger" lifestyle="transient"/>
+      <decorate service-type="srvType" decorator-type="decType" lifestyle="transient"/>
     </then>
   </on-new-scope>
 
   <if>
     <condition>
       <any >
-        <user any-of="jan" type="windows/application/thread/http"/>
+        <user any-of="jan" type="windows|application|thread|http"/>
         <role any-of="a,b,c" type="windows"/>
         <role all-of="d,e,f"/>
         <debug/>

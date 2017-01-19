@@ -113,17 +113,16 @@ namespace Xioc
       public object ResolveScoped(Type serviceType, bool throwException = true)
       {
          EnsureNotDisposed();
-         var scope = BeginScope();
+         var scope = (Scope)BeginScope();
          var instance = scope.Resolve(serviceType, throwException);
          if (instance == null)
          {
             // no need to register for release
             return null;
          }
-         var lifestyle = scope.GetBinding(serviceType).Lifestyle;
-         if (lifestyle == Lifestyle.PerContainer || lifestyle == Lifestyle.UnManaged)
+         if (scope.PerScopeInstances.Count==0)
          {
-            // no need to register for release
+            // no need to register, no need to release
             return instance;
          }
          lock (Root._scopedInstancesAtRoot)

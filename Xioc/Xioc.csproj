@@ -63,8 +63,6 @@
     <Compile Include="Proxy\IInvocation.cs" />
     <Compile Include="Proxy\InterceptorAction.cs" />
     <Compile Include="Proxy\ProxyBuilder.cs" />
-    <Compile Include="Wcf\Host\DefaultServiceHostIocInitializer.cs" />
-    <Compile Include="Wcf\Host\DefaultXiocServiceHostFactory.cs" />
     <Compile Include="Wcf\Host\IServiceHostIocInitializer.cs" />
     <Compile Include="Wcf\Host\XiocServiceHostFactory.cs" />
     <Compile Include="WithDependencies.cs" />
@@ -130,6 +128,10 @@
     <Content Include="Xml\xioc-example.xml">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Xml\xioc-example .cfg" />
+    <None Include="Xml\xioc-example.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

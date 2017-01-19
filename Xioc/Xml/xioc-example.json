@@ -1,0 +1,15 @@
+﻿{
+  "bind": [
+    { "service-type": "myservicetype", "implementation-type": "impltype", "lifestyle": "singleton" },
+    { "service-type": "myservicetype", "implementation-type": "impltype", "lifestyle": "singleton" },
+    {
+      "service-type": "myservicetype",
+      "implementation-type": "impltype",
+      "lifestyle": "singleton", "dependencies": [ 
+        {"name": "parname","value": "value"},
+        {"name": "parname","value": "value"}
+      ]
+
+    }
+  ]
+}
