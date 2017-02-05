@@ -43,6 +43,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="XPression, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\XPression.2.0.0\lib\net45\XPression.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\BinderExtensions.cs" />
@@ -100,10 +104,7 @@
     <Compile Include="Core\Scope.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\XPression\XPression\XPression.csproj">
-      <Project>{df533036-ccdc-4fd6-9f26-ffc7f1a36303}</Project>
-      <Name>XPression</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

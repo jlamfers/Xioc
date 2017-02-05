@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<xioc>
-  <!-- debug mode -->
-  <bind service-type="Xioc.Test.IFoo, Xioc.Test" implementation-type="Xioc.Test.Foo, Xioc.Test" lifestyle="Transient"/>
-</xioc>

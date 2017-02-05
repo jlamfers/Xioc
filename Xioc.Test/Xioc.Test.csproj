@@ -69,9 +69,6 @@
     <None Include="xioc.setup">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="debug.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Plugins\Xioc.Test.Plugin.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

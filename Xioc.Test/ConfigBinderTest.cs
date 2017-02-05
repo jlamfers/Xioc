@@ -76,7 +76,7 @@ namespace Xioc.Test
          }
          var sw = new Stopwatch();
          sw.Start();
-         for (var i = 0; i < 1000; i++)
+         for (var i = 0; i < 1; i++)
          {
             using (var s = c.BeginScope())
             {

@@ -10,10 +10,12 @@ namespace Xioc.Config
       {
          enumType = default(TEnum);
          var result = new List<string>();
+         TEnum t;
          foreach (var arg in args)
          {
-            if (arg.TryParseEnum<TEnum>(out enumType))
+            if (arg.TryParseEnum(out t))
             {
+               enumType = t;
                continue;
             }
             result.Add(arg);

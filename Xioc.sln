@@ -13,18 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xioc.Mvc5", "Xioc.Mvc5\Xioc.Mvc5.csproj", "{98F59633-8961-46BF-8BD3-545FEF352C5D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{FF349364-EB57-40AA-AEA9-D3D08CD7A3CC}"
-	ProjectSection(SolutionItems) = preProject
-		xioc-readme.txt = xioc-readme.txt
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xioc.Test.Shared", "Xioc.Test.Shared\Xioc.Test.Shared.csproj", "{AC84D728-69E0-4CF9-BA11-F8E7996ADC64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xioc.Test.Plugin", "Xioc.Test.Plugin\Xioc.Test.Plugin.csproj", "{02567B8E-4CE7-43A8-9435-87B16B42D048}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPression", "..\XPression\XPression\XPression.csproj", "{DF533036-CCDC-4FD6-9F26-FFC7F1A36303}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Temp", "Temp", "{AF709B10-DCE2-48F3-8D57-4CEFAE87FE48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +47,6 @@ Global
 		{02567B8E-4CE7-43A8-9435-87B16B42D048}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02567B8E-4CE7-43A8-9435-87B16B42D048}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02567B8E-4CE7-43A8-9435-87B16B42D048}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF533036-CCDC-4FD6-9F26-FFC7F1A36303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF533036-CCDC-4FD6-9F26-FFC7F1A36303}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF533036-CCDC-4FD6-9F26-FFC7F1A36303}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF533036-CCDC-4FD6-9F26-FFC7F1A36303}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +55,5 @@ Global
 		{69D30C91-4E9E-41E9-887A-103A415B4779} = {84BC5211-1A69-469B-96CD-45918D8A297E}
 		{AC84D728-69E0-4CF9-BA11-F8E7996ADC64} = {84BC5211-1A69-469B-96CD-45918D8A297E}
 		{02567B8E-4CE7-43A8-9435-87B16B42D048} = {84BC5211-1A69-469B-96CD-45918D8A297E}
-		{DF533036-CCDC-4FD6-9F26-FFC7F1A36303} = {AF709B10-DCE2-48F3-8D57-4CEFAE87FE48}
 	EndGlobalSection
 EndGlobal
