@@ -53,7 +53,7 @@
     <Compile Include="ScopeResolveTest.cs" />
     <Compile Include="UnmanagedTest.cs" />
     <Compile Include="WcfTest.cs" />
-    <Compile Include="XmlBinderTest.cs" />
+    <Compile Include="ConfigBinderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xioc.Test.Shared\Xioc.Test.Shared.csproj">
@@ -66,15 +66,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="xioc.setup">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="debug.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Plugins\Xioc.Test.Plugin.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="xioc.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,22 @@
+﻿using Xioc.Test;
+
+bind-mef-exports(perscope,'./Plugins');
+
+IFoo -> Foo as transient;
+IFoo -> Foo as transient;
+IFoo -> MyFoo2 with dependencies(createdAt,$(date(now())));
+
+if(debug(),
+
+    on-new-scope(
+      has-any-role(windows,Administrators),
+        IFoo <+ FooDecorator;  
+        IFoo <! MyInterceptor; 
+    );
+
+    if(has-any-role(Administrators,windows|thread|application), IFoo -> Foo as wcf-client);
+);
+
+debug-write(windows-roles(windows));
+debug-write(windows-roles(application));
+debug-write(user-name(application));

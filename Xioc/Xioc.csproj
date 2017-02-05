@@ -45,6 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\BinderExtensions.cs" />
+    <Compile Include="Config\Common\AccountHelper.cs" />
+    <Compile Include="Config\Common\BuildHelper.cs" />
+    <Compile Include="Config\ConfigScriptExtender.cs" />
+    <Compile Include="Config\ConfigScriptContext.cs" />
+    <Compile Include="Config\Extensions.cs" />
+    <Compile Include="Config\IXiocConfigExtender.cs" />
     <Compile Include="Core\Internal\ASyncManagerRootImpl.cs" />
     <Compile Include="Core\Binding.cs" />
     <Compile Include="Core\Internal\ASyncManager.cs" />
@@ -91,47 +98,12 @@
     <Compile Include="Lifestyle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\Scope.cs" />
-    <Compile Include="Xml\BinderExtension.cs" />
-    <Compile Include="Xml\BuildHelper.cs" />
-    <Compile Include="Xml\Core\RoleHelper.cs" />
-    <Compile Include="Xml\Elements\XmlBinderBind.cs" />
-    <Compile Include="Xml\Elements\XmlBinderBindAllOf.cs" />
-    <Compile Include="Xml\Elements\XmlBinderBindIf.cs" />
-    <Compile Include="Xml\Elements\XmlBinderBindMefExports.cs" />
-    <Compile Include="Xml\Elements\XmlBinderBindWcf.cs" />
-    <Compile Include="Xml\Elements\XmlBinderBindXiocExports.cs" />
-    <Compile Include="Xml\Elements\XmlBinderBindXml.cs" />
-    <Compile Include="Xml\Elements\XmlBinderDecorate.cs" />
-    <Compile Include="Xml\Elements\XmlBinderIfDebug.cs" />
-    <Compile Include="Xml\Elements\XmlBinderIfRelease.cs" />
-    <Compile Include="Xml\Elements\XmlBinderIntercept.cs" />
-    <Compile Include="Xml\Elements\XmlBinderOnNewScope.cs" />
-    <Compile Include="Xml\Elements\XmlBinderReturn.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateAll.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateAny.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateDebug.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateFalse.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateNot.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateRole.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateTrue.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateUser.cs" />
-    <Compile Include="Xml\Extensions.cs" />
-    <Compile Include="Xml\IXmlConfigElement.cs" />
-    <Compile Include="Xml\XmlConfig.cs" />
-    <Compile Include="Xml\Elements\XmlPredicateRelease.cs" />
-    <Compile Include="Xml\XmlConfigElement.cs" />
-    <Compile Include="Xml\XmlConfigElementAttribute.cs" />
-    <Compile Include="Xml\XmlConfigElementBinder.cs" />
-    <Compile Include="Xml\XmlConfigElementPredicate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Xml\xioc-example.xml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Xml\xioc-example .cfg" />
-    <None Include="Xml\xioc-example.json" />
+    <ProjectReference Include="..\..\XPression\XPression\XPression.csproj">
+      <Project>{df533036-ccdc-4fd6-9f26-ffc7f1a36303}</Project>
+      <Name>XPression</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

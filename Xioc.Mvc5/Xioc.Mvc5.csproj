@@ -72,7 +72,7 @@
     <Compile Include="XiocHttpModule.cs" />
     <Compile Include="BinderExtension.cs" />
     <Compile Include="XiocMvcDependencyResolver.cs" />
-    <Compile Include="XmlBinderSetupMvc.cs" />
+    <Compile Include="XiocConfigExtender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -14,7 +14,7 @@ namespace Xioc.Core
           ProcessedAppDomains = new ConcurrentDictionary<AppDomain, AppDomain>();
 
 
-      public static Type[] GetExportedTypes(this Assembly self)
+      public static Type[] GetVisibleTypes(this Assembly self)
       {
          try
          {
@@ -28,7 +28,7 @@ namespace Xioc.Core
       }
       public static IEnumerable<Type> GetExportedTypes(this AppDomain self)
       {
-         return self.GetAvailableAssemblies().SelectMany(a => a.GetExportedTypes());
+         return self.GetAvailableAssemblies().SelectMany(a => a.GetVisibleTypes());
       }
       public static IEnumerable<Assembly> GetAvailableAssemblies(this AppDomain self)
       {
@@ -55,7 +55,7 @@ namespace Xioc.Core
             .ToList();
       }
 
-      private static AppDomain EnsureAvailableAssembliesLoaded(this AppDomain self)
+      public static AppDomain EnsureAvailableAssembliesLoaded(this AppDomain self)
       {
          ProcessedAppDomains.GetOrAdd(self, ad =>
          {
@@ -71,7 +71,7 @@ namespace Xioc.Core
 
          return self;
       }
-      private static Assembly EnsureAssemblyIsLoaded(this AppDomain self, string assemblyFileName)
+      public static Assembly EnsureAssemblyIsLoaded(this AppDomain self, string assemblyFileName)
       {
          try
          {

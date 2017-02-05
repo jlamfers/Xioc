@@ -10,7 +10,7 @@ using Xioc.Core.Internal;
 namespace Xioc
 {
    /// <summary>
-   /// The NiocContainer holds the root kernel. You cannot resolve instances from the container.
+   /// The XiocContainer holds the root kernel. You cannot resolve instances from the container.
    /// To resolve instances you first need to create a scope using BeginScope(). Then you can
    /// resolve instances from the returned scope object. 
    /// You must dispose a scope on the end of its lifetime.
