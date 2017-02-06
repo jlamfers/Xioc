@@ -35,7 +35,7 @@ namespace Xioc.Config.Common
          Windows = 1,
          Application = 2,
          Thread = 4,
-         Http = 8
+         Web = 8
       }
 
       public enum WindowsAccountType
@@ -105,12 +105,12 @@ namespace Xioc.Config.Common
             return new HashSet<string>(user.GetGroups().Select(p => p.Name));
          });
 
-      public static bool IsInRole(IList<string> any, IList<string> all, AccountType type = AccountType.Thread | AccountType.Http)
+      public static bool IsInRole(IList<string> any, IList<string> all, AccountType type = AccountType.Thread | AccountType.Web)
       {
          return type.HasFlag(AccountType.Windows) && IsInWindowsRole(WindowsAccountType.Windows, any, all) ||
                 type.HasFlag(AccountType.Application) && IsInWindowsRole(WindowsAccountType.Application, any, all) ||
                 type.HasFlag(AccountType.Thread) && IsInRole(Thread.CurrentPrincipal, any, all) ||
-                type.HasFlag(AccountType.Http) && HttpContext.Current != null && IsInRole(HttpContext.Current.User, any, all);
+                type.HasFlag(AccountType.Web) && HttpContext.Current != null && IsInRole(HttpContext.Current.User, any, all);
       }
       public static bool IsInRole(this IPrincipal principal, IList<string> any, IList<string> all)
       {
@@ -151,12 +151,12 @@ namespace Xioc.Config.Common
          return UserGroups.Get(GetWindowsUserName(type));
       }
 
-      public static bool IsUser(IList<string> any, AccountType type = AccountType.Thread | AccountType.Http)
+      public static bool IsUser(IList<string> any, AccountType type = AccountType.Thread | AccountType.Web)
       {
          return type.HasFlag(AccountType.Windows) && any.Contains(GetWindowsUserName(WindowsAccountType.Windows)) ||
                 type.HasFlag(AccountType.Application) && any.Contains(GetWindowsUserName(WindowsAccountType.Application)) ||
                 type.HasFlag(AccountType.Thread) && Thread.CurrentPrincipal.Identity != null && Thread.CurrentPrincipal.Identity.Name != null && any.Contains(Thread.CurrentPrincipal.Identity.Name) ||
-                type.HasFlag(AccountType.Http) && HttpContext.Current != null && HttpContext.Current.User != null && HttpContext.Current.User.Identity != null && any.Contains(HttpContext.Current.User.Identity.Name);
+                type.HasFlag(AccountType.Web) && HttpContext.Current != null && HttpContext.Current.User != null && HttpContext.Current.User.Identity != null && any.Contains(HttpContext.Current.User.Identity.Name);
       }
 
       public static string UserName(AccountType type)
@@ -169,7 +169,7 @@ namespace Xioc.Config.Common
                return GetWindowsUserName(WindowsAccountType.Application);
             case AccountType.Thread:
                return Thread.CurrentPrincipal.Identity != null ? Thread.CurrentPrincipal.Identity.Name : null;
-            case AccountType.Http:
+            case AccountType.Web:
                return (HttpContext.Current != null && HttpContext.Current.User != null && HttpContext.Current.User.Identity != null) ? HttpContext.Current.User.Identity.Name : null;
             default:
                throw new ArgumentOutOfRangeException("type");
