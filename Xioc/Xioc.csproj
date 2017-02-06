@@ -43,9 +43,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="XPression, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="XPression, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\XPression.2.0.0\lib\net45\XPression.dll</HintPath>
+      <HintPath>..\packages\XPression.1.1.0\lib\net45\XPression.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
