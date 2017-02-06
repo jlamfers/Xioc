@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package > 
+  <metadata>
+    <id>Xioc.Mvc5</id>
+    <version>$version$</version>
+    <authors>Jaap Lamfers</authors>
+    <owners>Jaap Lamfers</owners>
+    <projectUrl>https://github.com/jlamfers/Xioc</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Xioc MVC5 extension</description>
+    <releaseNotes>release 1.1</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Ioc dependency injection MVC WCF WebApi Scope</tags>
+    <dependencies>
+      <dependency id="Xioc" version="$version$" />
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="Xioc.Mvc5.dll" target="lib/net45/Xioc.Mvc5.dll"/>
+  </files>
+</package>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package > 
+  <metadata>
+    <id>Xioc</id>
+    <version>$version$</version>
+    <authors>Jaap Lamfers</authors>
+    <owners>Jaap Lamfers</owners>
+    <projectUrl>https://github.com/jlamfers/Xioc</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Small but rich fully scope based IOC container, with easy MVC, WebApi and WCF integration</description>
+    <releaseNotes>release 1.1</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Ioc dependency injection MVC WCF WebApi Scope</tags>
+    <dependencies>
+      <dependency id="XPression" version="1.1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="Xioc.dll" target="lib/net45/Xioc.dll"/>
+  </files>
+</package>

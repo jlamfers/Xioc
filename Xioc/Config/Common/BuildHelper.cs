@@ -1,4 +1,5 @@
-﻿#region  License
+﻿
+#region  License
 /*
 Copyright 2017 - Jaap Lamfers - jlamfers@xipton.net
 
@@ -21,7 +22,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-namespace XPression.Language.Syntax.DSL.Helpers
+namespace Xioc.Config.Common
 {
    internal static class BuildHelper
    {

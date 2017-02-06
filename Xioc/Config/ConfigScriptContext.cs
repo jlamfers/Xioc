@@ -1,4 +1,21 @@
-﻿using System;
+﻿#region  License
+/*
+Copyright 2017 - Jaap Lamfers - jlamfers@xipton.net
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ * */
+#endregion
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +25,6 @@ using Xioc.Core;
 using Xioc.Wcf;
 using XPression.Core;
 using XPression.Language.Syntax;
-using XPression.Language.Syntax.DSL.Helpers;
 
 namespace Xioc.Config
 {
@@ -111,11 +127,6 @@ namespace Xioc.Config
 
       public IBinder BinderTarget { get; private set; }
 
-      public bool Using(string @namespace)
-      {
-         _namespaces.Add(@namespace);
-         return true;
-      }
       [ScriptMethod("bind")]
       public bool Bind(string serviceType, string implementationType, string lifestyle)
       {
@@ -136,6 +147,11 @@ namespace Xioc.Config
          return true;
       }
 
+      internal bool _Using(string @namespace)
+      {
+         _namespaces.Add(@namespace);
+         return true;
+      }
       internal bool _Bind(string serviceType, Tuple<Type, string> tuple)
       {
          if (tuple.Item2.ToLower() == "wcf-client")
@@ -159,7 +175,21 @@ namespace Xioc.Config
          BinderTarget.Bind(GetType(serviceType), GetType(tuple.Item1), dependencies:tuple.Item2);
          return true;
       }
-
+      internal bool _Decorate(string serviceType, Tuple<Type, string> tuple)
+      {
+         BinderTarget.Decorate(GetType(serviceType), tuple.Item1, tuple.Item2.ParseEnum<Lifestyle>());
+         return true;
+      }
+      internal bool _Decorate(string serviceType, Tuple<Type, Tuple<string, IDictionary<string, object>>> tuple)
+      {
+         BinderTarget.Decorate(GetType(serviceType), tuple.Item1, tuple.Item2.Item1.ParseEnum<Lifestyle>(), tuple.Item2.Item2);
+         return true;
+      }
+      internal bool _Decorate(string serviceType, Tuple<string, IDictionary<string, object>> tuple)
+      {
+         BinderTarget.Decorate(GetType(serviceType), GetType(tuple.Item1), dependencies: tuple.Item2);
+         return true;
+      }
       internal Tuple<Type, string> _As(string implementationType, string lifestyle)
       {
          return Tuple.Create(GetType(implementationType), lifestyle);
@@ -179,6 +209,7 @@ namespace Xioc.Config
          BinderTarget.Intercept(GetType(serviceType), GetType(interceptorType));
          return true;
       }
+
       [ScriptMethod("decorate")]
       public bool Decorate(string serviceType, string interceptorType)
       {
@@ -190,10 +221,6 @@ namespace Xioc.Config
       {
          BinderTarget.Decorate(GetType(serviceType), GetType(interceptorType), lifestyle.ParseEnum<Lifestyle>());
          return true;
-      }
-      internal bool _Decorate(string serviceType, Tuple<string, string> tuple)
-      {
-         return Decorate(serviceType, tuple.Item1, tuple.Item2);
       }
 
       [ScriptMethod("return")]
@@ -257,7 +284,6 @@ namespace Xioc.Config
          },level);
          return true;
       }
-
       [ScriptMethod("on-new-scope")]
       public bool OnNewScope(Delegate condition,Delegate bindings)
       {
@@ -268,7 +294,6 @@ namespace Xioc.Config
       {
          return OnNewScope(null, bindings, level);
       }
-
       [ScriptMethod("on-new-scope")]
       public bool OnNewScope(Delegate bindings)
       {
@@ -312,6 +337,15 @@ namespace Xioc.Config
          BinderTarget.BindXiocExports(assemblyPathNames.SelectMany(LoadAssembly));
          return true;
       }
+      [ScriptMethod("bind-all-of")]
+      public bool BindAllOf(string[] args)
+      {
+         var typename = args.FirstOrDefault();
+         Lifestyle lifestyle;
+         args = args.Skip(1).ToArray().GetArgs(out lifestyle);
+         BinderTarget.BindAllOf(GetType(typename), !args.Any() ? AppDomain.CurrentDomain.GetAvailableAssemblies() : args.Select(fn => AppDomain.CurrentDomain.EnsureAssemblyIsLoaded(fn)),null,lifestyle);
+         return true;
+      }
 
       [ScriptMethod("dependencies")]
       public IDictionary<string, object> Dependencies(params object[] args)
@@ -338,7 +372,8 @@ namespace Xioc.Config
       [ScriptMethod("$")]
       public Delegate AsDelegate(Delegate d)
       {
-         return new Func<object>(() => d.DynamicInvoke(new object[]{null}));
+         var args = new object[] {null};
+         return new Func<object>(() => d.DynamicInvoke(args));
       }
 
       private static IEnumerable<Assembly> LoadAssembly(string from)

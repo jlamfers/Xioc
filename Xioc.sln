@@ -17,6 +17,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xioc.Test.Shared", "Xioc.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xioc.Test.Plugin", "Xioc.Test.Plugin\Xioc.Test.Plugin.csproj", "{02567B8E-4CE7-43A8-9435-87B16B42D048}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1D36E7A-3332-46C5-A0BA-6104A2285991}"
+	ProjectSection(SolutionItems) = preProject
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{231ED2EE-55F7-4AE2-A549-B8195C3D7689}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet\nuget.build.ps1 = NuGet\nuget.build.ps1
+		NuGet\Xioc.Mvc5.nuspec = NuGet\Xioc.Mvc5.nuspec
+		NuGet\Xioc.nuspec = NuGet\Xioc.nuspec
+		NuGet\Xioc.WebApi2.nuspec = NuGet\Xioc.WebApi2.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

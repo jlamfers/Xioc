@@ -1,4 +1,4 @@
-ï»¿#region  License
+#region  License
 /*
 Copyright 2017 - Jaap Lamfers - jlamfers@xipton.net
 
@@ -15,29 +15,15 @@ Copyright 2017 - Jaap Lamfers - jlamfers@xipton.net
    limitations under the License.
  * */
 #endregion
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using Xioc.Config;
+using System.Runtime.CompilerServices;
 
-namespace Xioc.WebApi2
-{
-   public class XiocConfigExtender : IXiocConfigExtender
-   {
-      public void ExtendSyntax(IList<Tuple<string, MemberInfo>> tuples)
-      {
-         tuples.Add(Tuple.Create("setup-webapi", Method(Setup)));
-      }
+[assembly:InternalsVisibleTo("Xioc.Test")]
 
-      private static MemberInfo Method(Action<ConfigScriptContext> setup)
-      {
-         return setup.Method;
-      }
-
-      internal static void Setup(ConfigScriptContext context)
-      {
-         context.BinderTarget.SetupWebApi(null, null);
-      }
-
-   }
-}
+[assembly: AssemblyCompany("Jaap Lamfers")]
+[assembly: AssemblyProduct("Xioc")]
+[assembly: AssemblyCopyright("Copyright © 2017")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]

@@ -1,4 +1,21 @@
-﻿using System;
+﻿#region  License
+/*
+Copyright 2017 - Jaap Lamfers - jlamfers@xipton.net
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ * */
+#endregion
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -59,13 +76,20 @@ namespace Xioc.Config
          functions.Add(new FunctionMap("->", GetMethodInfo(x => x._Bind(null, (Tuple<Type, string>)null))));// tuple overload
          functions.Add(new FunctionMap("->", GetMethodInfo(x => x._Bind(null, (Tuple<Type, Tuple<string, IDictionary<string, object>>>)null))));// tuple overload
          functions.Add(new FunctionMap("->", GetMethodInfo(x => x._Bind(null, (Tuple<string, IDictionary<string, object>>)null))));// tuple overload
+
          functions.Add(new FunctionMap("<+", GetMethodInfo(x => x.Decorate(null, null))));
-         functions.Add(new FunctionMap("<+", GetMethodInfo(x => x._Decorate(null,null))));
+         functions.Add(new FunctionMap("<+", GetMethodInfo(x => x._Decorate(null, (Tuple<Type, string>)null))));// tuple overload
+         functions.Add(new FunctionMap("<+", GetMethodInfo(x => x._Decorate(null, (Tuple<Type, Tuple<string, IDictionary<string, object>>>)null))));// tuple overload
+         functions.Add(new FunctionMap("<+", GetMethodInfo(x => x._Decorate(null, (Tuple<string, IDictionary<string, object>>)null))));// tuple overload
+
          functions.Add(new FunctionMap("<!", GetMethodInfo(x => x.Intercept(null, null))));
+
          functions.Add(new FunctionMap("as", GetMethodInfo(x => x._As(null, (string)null))));
          functions.Add(new FunctionMap("as", GetMethodInfo(x => x._As(null, (Tuple<string, IDictionary<string, object>>)null))));
+
          functions.Add(new FunctionMap("with", GetMethodInfo(x => x._WithDependencies(null, null))));
-         functions.Add(new FunctionMap("using", GetMethodInfo(x => x.Using(null))));
+
+         functions.Add(new FunctionMap("using", GetMethodInfo(x => x._Using(null))));
       }
 
       private MethodInfo GetMethodInfo(Expression<Func<ConfigScriptContext, object>> expression)
