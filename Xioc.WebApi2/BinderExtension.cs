@@ -25,7 +25,7 @@ namespace Xioc.WebApi2
 {
    public static class BinderExtension
     {
-        public static IBinder SetupWebApi(this IBinder self, IEnumerable<Assembly> apiControllerAssemblies, HttpConfiguration config)
+      public static IBinder SetupWebApi(this IBinder self, HttpConfiguration config, IEnumerable<Assembly> apiControllerAssemblies = null)
         {
             apiControllerAssemblies = apiControllerAssemblies ?? AppDomain.CurrentDomain.GetAvailableAssemblies();
             config = config ?? GlobalConfiguration.Configuration;

@@ -16,20 +16,20 @@ Copyright 2017 - Jaap Lamfers - jlamfers@xipton.net
  * */
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Mvc;
+using Xioc.Core;
 
 namespace Xioc.Mvc5
 {
    public static class BinderExtension
    {
-      public static IBinder SetupMvc(this IBinder self, IEnumerable<Assembly> controllerAssemblies)
+      public static IBinder SetupMvc(this IBinder self, IEnumerable<Assembly> controllerAssemblies = null)
       {
-         if (controllerAssemblies != null)
-         {
-            self.BindAllOf<Controller>(controllerAssemblies);
-         }
+         controllerAssemblies = controllerAssemblies ?? AppDomain.CurrentDomain.GetAvailableAssemblies();
+         self.BindAllOf<Controller>(controllerAssemblies);
          XiocHttpModule.SetContainer(self.Container);
          DependencyResolver.SetResolver(new XiocMvcDependencyResolver(DependencyResolver.Current));
          return self;
